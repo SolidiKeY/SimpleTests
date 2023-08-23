@@ -22,4 +22,12 @@ contract Storage {
         bool outside = s3.a == s4.a;
         return (ba1a2, outside);
     }
+
+    // should return 1
+    function isShallow() public pure returns (int) {
+        S[] memory lst = new S[](10);
+        lst[1] = lst[0];
+        lst[0].a = 1;
+        return lst[1].a;
+    }
 }
