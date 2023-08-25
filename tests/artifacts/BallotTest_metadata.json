@@ -1,0 +1,77 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "testStorage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"tests/my_test.sol": "BallotTest"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/storage.sol": {
+			"keccak256": "0xbca74f0e754922c9a304960748824dd5f2dbf6eee809acca36553892de48b236",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6cfdc84ef3a412ef196226a73606190b6af62c36f16e05af8c40087d81725978",
+				"dweb:/ipfs/QmX7cSGXLWfUx7BiQmjpk2KXcfCzrzh6q8BMnN5363RCJn"
+			]
+		},
+		"hardhat/console.sol": {
+			"keccak256": "0x7434453e6d3b7d0e5d0eb7846ffdbc27f0ccf3b163591263739b628074dc103a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://49355f780520494d1d5a0f01858385e51bb5280ce0ecfb960f16995065dca395",
+				"dweb:/ipfs/QmSwJ6C5QLz6xKeQZS8wbwjU1KxRFTYfwbGmtzisd5sRW4"
+			]
+		},
+		"remix_tests.sol": {
+			"keccak256": "0xe2783cdc204cba8c72494119339f1d90f9022b15d6c718c668b7f097d8e29787",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://bb6a22e64c7f16bcaab63b1c1a1b269d5be8a6d37bdd9dec1718477ab916b18e",
+				"dweb:/ipfs/QmdkW1tT5iadBvaHMCoskhDGZKnfdg8o1D9CcoQYtdJet7"
+			]
+		},
+		"tests/my_test.sol": {
+			"keccak256": "0x14b34f5e9b65e4ffce4bf96d0a7fbf409ff3cda796713d0b19d097a1a7998332",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://39bb34da8091a6526bdfeada25a4a36219911b0a7cfa01d19ff5b29ba380ba83",
+				"dweb:/ipfs/QmbVTmT9Su2oVaqMhUzrPRxm968FMKjUneYJsNLRgST4Qk"
+			]
+		}
+	},
+	"version": 1
+}
