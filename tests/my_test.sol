@@ -16,4 +16,9 @@ contract BallotTest {
         Assert.equal(v2, 2, "v2 should be deep copied");
     }
 
+    function testArray() public {
+        st = new Storage();
+        int v1 = st.isShallow(1);
+        Assert.equal(v1, 1, "v1 should be a shallow copied");
+    }
 }

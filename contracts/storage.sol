@@ -28,10 +28,10 @@ contract Storage {
         return (ba1a2, outside);
     }
 
-    function isShallow() public pure returns (int) {
+    function isShallow(int val) public pure returns (int) {
         S[] memory lst = new S[](10);
         lst[1] = lst[0];
-        lst[0].a = 1;
+        lst[0].a = val;
         return lst[1].a;
     }
 
