@@ -62,4 +62,14 @@ contract Storage {
 
         return (s5[0].a, s5[1].a);
     }
+
+    function copyingStructLocally(int v) pure public returns (int) {
+        S memory s0;
+        S memory s1;
+
+        s1 = s0;
+        s0.a = v;
+
+        return s1.a;
+    }
 }

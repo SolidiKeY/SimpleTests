@@ -7,18 +7,22 @@ import "../contracts/storage.sol";
 
 contract BallotTest {
 
-    Storage st;
-
     function testStorage() public {
-        st = new Storage();
+        Storage st = new Storage();
         (int v1 , int v2) = st.usingStorage();
         Assert.equal(v1, 0, "v1 should be deep copied");
         Assert.equal(v2, 2, "v2 should be deep copied");
     }
 
     function testArray() public {
-        st = new Storage();
+        Storage st = new Storage();
         int v1 = st.isShallow(1);
         Assert.equal(v1, 1, "v1 should be a shallow copied");
+    }
+
+    function testShallowStruct() public {
+        Storage st = new Storage();
+        int v1 = st.copyingStructLocally(1);
+        Assert.equal(v1, 1, "v1 should be shallowed copied");
     }
 }
