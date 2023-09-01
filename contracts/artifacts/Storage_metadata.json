@@ -11,7 +11,32 @@
 				"type": "constructor"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "int256",
+						"name": "v",
+						"type": "int256"
+					}
+				],
+				"name": "copyingStructLocally",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int256",
+						"name": "val",
+						"type": "int256"
+					}
+				],
 				"name": "isShallow",
 				"outputs": [
 					{
@@ -88,11 +113,11 @@
 	},
 	"sources": {
 		"contracts/storage.sol": {
-			"keccak256": "0xbca74f0e754922c9a304960748824dd5f2dbf6eee809acca36553892de48b236",
+			"keccak256": "0x17dde3ee416c936d4a2d8451f59291a0aae4f585503f0fd27bb96f803fc57255",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6cfdc84ef3a412ef196226a73606190b6af62c36f16e05af8c40087d81725978",
-				"dweb:/ipfs/QmX7cSGXLWfUx7BiQmjpk2KXcfCzrzh6q8BMnN5363RCJn"
+				"bzz-raw://c7ad968cf14b4ccd383eb05c6960781f10b9fb7205f7607d147bf3833a2642f0",
+				"dweb:/ipfs/QmQSS3bZAdfBSAGsLX5fmT2nfHFw4FTXJQmX6XwQ4AL3Zj"
 			]
 		}
 	},

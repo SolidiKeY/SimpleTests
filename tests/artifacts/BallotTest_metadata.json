@@ -14,6 +14,13 @@
 			},
 			{
 				"inputs": [],
+				"name": "testShallowStruct",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "testStorage",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -48,11 +55,11 @@
 	},
 	"sources": {
 		"contracts/storage.sol": {
-			"keccak256": "0xd0afc9b1cded2b2740891ca3d6b09286d65b7d48c0b833b7e129ce57742b81f4",
+			"keccak256": "0x17dde3ee416c936d4a2d8451f59291a0aae4f585503f0fd27bb96f803fc57255",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7679a82eea0d32a7e2425acfe49b05134f207376be9cdcc11fa07632fb1fd6f8",
-				"dweb:/ipfs/QmcezX9fdTn4XC95hfHQ6HT7nTZhPXAZC3hQL5DxKYTXBy"
+				"bzz-raw://c7ad968cf14b4ccd383eb05c6960781f10b9fb7205f7607d147bf3833a2642f0",
+				"dweb:/ipfs/QmQSS3bZAdfBSAGsLX5fmT2nfHFw4FTXJQmX6XwQ4AL3Zj"
 			]
 		},
 		"hardhat/console.sol": {
@@ -72,11 +79,11 @@
 			]
 		},
 		"tests/my_test.sol": {
-			"keccak256": "0xe6456aaf795f4bc513504a19c94aa0ab002f06ff4116f30e808a8cb12fd17f69",
+			"keccak256": "0x48d69e564c8f3901abbd73205acf4c4b5057d557087252801ceff5c3241aa6b1",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://a911ed37d406b151ee5f12c0789ae7ff62004ae8b8d070ed6fcf694545c2d32c",
-				"dweb:/ipfs/QmcmsPm1PAXoj3HGwfjrwNbY3HNpEKVJwGC66FYfaQDLVc"
+				"bzz-raw://213af38621826f027b99aba046865dfaff78a0d2bdf013f4f7c5c20b90445338",
+				"dweb:/ipfs/QmUw7rxNkSWXxqqfmnLkUNNzUpaaqDDG6nZuf6bHEidqEE"
 			]
 		}
 	},
