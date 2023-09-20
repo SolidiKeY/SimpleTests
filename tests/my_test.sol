@@ -25,4 +25,12 @@ contract BallotTest {
         int v1 = st.copyingStructLocally(1);
         Assert.equal(v1, 1, "v1 should be shallowed copied");
     }
+
+    function testUsingArrayStorage() public {
+        Storage st = new Storage();
+        st.usingArrayStorage();
+        Assert.equal(st.getArrayLenght(), 2, "Should added two values");
+        int arrayValue = st.getArray(1);
+        Assert.equal(arrayValue, 1, "Should allow to write");
+    }
 }

@@ -12,6 +12,8 @@ contract Storage {
     S s4;
     S[] s5;
 
+    int[] public arrayStorage;
+
     constructor(){
 
     }
@@ -71,5 +73,18 @@ contract Storage {
         s0.a = v;
 
         return s1.a;
+    }
+
+    function usingArrayStorage() public{
+        arrayStorage.push(0);
+        arrayStorage.push(1);
+    }
+
+    function getArray(uint p) view  public returns (int){
+        return arrayStorage[p];
+    }
+
+    function getArrayLenght() view public returns (uint){
+        return arrayStorage.length;
     }
 }
