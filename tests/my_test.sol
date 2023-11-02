@@ -33,4 +33,22 @@ contract BallotTest {
         int arrayValue = st.getArray(1);
         Assert.equal(arrayValue, 1, "Should allow to write");
     }
+
+    function testMatrixDefaultValue() public {
+        int[5][10] memory matrix;
+        int v = matrix[0][0];
+        Assert.equal(v, 0, "Should be the default");
+    }
+
+    function testMatrixCopy() public {
+        int[5][10] memory matrix1;
+        int[5][10] memory matrix2;
+
+        matrix1[0][0] = 1;
+        matrix2[0] = matrix1[0];
+
+        int v2 = matrix2[0][0];
+
+        Assert.equal(v2, 1, "Should shallow copy");
+    }
 }

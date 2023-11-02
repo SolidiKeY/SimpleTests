@@ -54,6 +54,11 @@ contract Storage {
     //     return lst[1].a;
     // }
 
+    // function uinitializeThrowException() public {
+    //     int[] memory vector;
+    //     int value = vector[0];
+    // }
+
     function usingStorage() public returns (int, int) {
         s5.push(s3);
         s3.a = 1;
