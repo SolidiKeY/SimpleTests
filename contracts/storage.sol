@@ -12,8 +12,6 @@ contract Storage {
     S s4;
     S[] s5;
 
-    int[] public arrayStorage;
-
     constructor(){
 
     }
@@ -28,13 +26,6 @@ contract Storage {
         bool ba1a2 = a1 == a2;
         bool outside = s3.a == s4.a;
         return (ba1a2, outside);
-    }
-
-    function isShallow(int val) public pure returns (int) {
-        S[] memory lst = new S[](10);
-        lst[1] = lst[0];
-        lst[0].a = val;
-        return lst[1].a;
     }
 
     // Static Array does not work in storage
@@ -54,42 +45,10 @@ contract Storage {
     //     return lst[1].a;
     // }
 
-    // function uinitializeThrowException() public {
-    //     int[] memory vector;
-    //     int value = vector[0];
-    // }
-
-    function usingStorage() public returns (int, int) {
-        s5.push(s3);
-        s3.a = 1;
-        S memory s0;
-        s0.a = 2;
-        s5.push(s0);
-        s0.a = 3;
-
-        return (s5[0].a, s5[1].a);
+    function uinitializeThrowException() public pure returns (int)  {
+        int[] memory vector;
+        int value = vector[0];
+        return value;
     }
 
-    function copyingStructLocally(int v) pure public returns (int) {
-        S memory s0;
-        S memory s1;
-
-        s1 = s0;
-        s0.a = v;
-
-        return s1.a;
-    }
-
-    function usingArrayStorage() public{
-        arrayStorage.push(0);
-        arrayStorage.push(1);
-    }
-
-    function getArray(uint p) view  public returns (int){
-        return arrayStorage[p];
-    }
-
-    function getArrayLenght() view public returns (uint){
-        return arrayStorage.length;
-    }
 }

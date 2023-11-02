@@ -6,31 +6,58 @@ import "hardhat/console.sol";
 import "../contracts/storage.sol";
 
 contract BallotTest {
+    struct  S {
+        int a;
+        bool b;
+    }
+
+    S s3;
+    S[] s5;
 
     function testStorage() public {
-        Storage st = new Storage();
-        (int v1 , int v2) = st.usingStorage();
+        s5.push(s3);
+        s3.a = 1;
+        S memory s0;
+        s0.a = 2;
+        s5.push(s0);
+        s0.a = 3;
+
+        int v1 = s5[0].a;
         Assert.equal(v1, 0, "v1 should be deep copied");
+
+        int v2 = s5[1].a;
         Assert.equal(v2, 2, "v2 should be deep copied");
     }
 
     function testArray() public {
-        Storage st = new Storage();
-        int v1 = st.isShallow(1);
+        S[] memory lst = new S[](10);
+        lst[1] = lst[0];
+        lst[0].a = 1;
+
+        int v1 = lst[1].a;
         Assert.equal(v1, 1, "v1 should be a shallow copied");
     }
 
     function testShallowStruct() public {
-        Storage st = new Storage();
-        int v1 = st.copyingStructLocally(1);
+        S memory s0;
+        S memory s1;
+
+        s1 = s0;
+        s0.a = 1;
+
+        int v1 = s1.a;
         Assert.equal(v1, 1, "v1 should be shallowed copied");
     }
 
+    int[] public arrayStorage;
+
     function testUsingArrayStorage() public {
-        Storage st = new Storage();
-        st.usingArrayStorage();
-        Assert.equal(st.getArrayLenght(), 2, "Should added two values");
-        int arrayValue = st.getArray(1);
+        arrayStorage.push(0);
+        arrayStorage.push(1);
+
+        uint arrayLenght = arrayStorage.length;
+        Assert.equal(arrayLenght, 2, "Should added two values");
+        int arrayValue = arrayStorage[1];
         Assert.equal(arrayValue, 1, "Should allow to write");
     }
 

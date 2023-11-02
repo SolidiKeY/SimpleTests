@@ -14,6 +14,41 @@
 			},
 			{
 				"inputs": [],
+				"name": "testDynamicMatrix",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testDynamicVec",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testMatrixCopy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testMatrixDefaultValue",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testMatrixRowCopy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "testShallowStruct",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -22,6 +57,27 @@
 			{
 				"inputs": [],
 				"name": "testStorage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testStorageFixedMatrix",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testStorageMatrix",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "testUsingArrayStorage",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -55,11 +111,11 @@
 	},
 	"sources": {
 		"contracts/storage.sol": {
-			"keccak256": "0x17dde3ee416c936d4a2d8451f59291a0aae4f585503f0fd27bb96f803fc57255",
+			"keccak256": "0x7671e1c55cf61c0e02a40c6a947aa1ef1c5d2d1fd8b60a626256fbb85942fc8f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c7ad968cf14b4ccd383eb05c6960781f10b9fb7205f7607d147bf3833a2642f0",
-				"dweb:/ipfs/QmQSS3bZAdfBSAGsLX5fmT2nfHFw4FTXJQmX6XwQ4AL3Zj"
+				"bzz-raw://13de07416dc49e236b73f7861af9ca59b919d7b01eb7452fe4dcc8ab92fb3a27",
+				"dweb:/ipfs/QmZZSaazW41uEUYv7omEPqhHSvtapuruTc8jv8iRTP3q3w"
 			]
 		},
 		"hardhat/console.sol": {
@@ -79,11 +135,11 @@
 			]
 		},
 		"tests/my_test.sol": {
-			"keccak256": "0x48d69e564c8f3901abbd73205acf4c4b5057d557087252801ceff5c3241aa6b1",
+			"keccak256": "0xd0a8a324a1ac73aded143641f19b35c80ce2ac5e6c84af0a9c4454f4b3ee8406",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://213af38621826f027b99aba046865dfaff78a0d2bdf013f4f7c5c20b90445338",
-				"dweb:/ipfs/QmUw7rxNkSWXxqqfmnLkUNNzUpaaqDDG6nZuf6bHEidqEE"
+				"bzz-raw://958d0739fb85633b6dd00eab6268e00847d2133a32d97f7340207a61f575ca9c",
+				"dweb:/ipfs/QmdEkrpEu7vA5Ey2rkKyhkw5r2Bk12tN94PKBxwBk3oNXR"
 			]
 		}
 	},

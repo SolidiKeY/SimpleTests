@@ -13,6 +13,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "arrayStorage",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "int256",
 						"name": "v",
 						"type": "int256"
@@ -27,6 +46,38 @@
 					}
 				],
 				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "p",
+						"type": "uint256"
+					}
+				],
+				"name": "getArray",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getArrayLenght",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -64,6 +115,13 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "usingArrayStorage",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -113,11 +171,11 @@
 	},
 	"sources": {
 		"contracts/storage.sol": {
-			"keccak256": "0x17dde3ee416c936d4a2d8451f59291a0aae4f585503f0fd27bb96f803fc57255",
+			"keccak256": "0xb486c36adec72225a840bce6c76bd5ef6c4216a289e73c170a706c816dedf620",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c7ad968cf14b4ccd383eb05c6960781f10b9fb7205f7607d147bf3833a2642f0",
-				"dweb:/ipfs/QmQSS3bZAdfBSAGsLX5fmT2nfHFw4FTXJQmX6XwQ4AL3Zj"
+				"bzz-raw://aa71ec7bef4b09184449d1551784a349a4a3b983a491f3f21ef3f761ec7acb78",
+				"dweb:/ipfs/Qme7ZUuyFAqwjXbbPGbjtwBjURfbyYS75Jb4cwK9Grr9DS"
 			]
 		}
 	},
