@@ -15,18 +15,19 @@ contract BallotTest {
     Person[] family;
 
     function testStorage() public {
+        int aliceAgeBefore = alice.age;
+        Assert.equal(aliceAgeBefore, 0, "Alice age should be the default value");
         family.push(alice);
-        alice.age = 1;
-        Person memory bob;
-        bob.age = 2;
-        family.push(bob);
-        bob.age = 3;
-
+        alice.age = 20;
         int aliceAge = family[0].age;
-        Assert.equal(aliceAge, 0, "v1 should be deep copied");
+        Assert.equal(aliceAge, 0, "alice age should not change change");
 
+        Person memory bob;
+        bob.age = 40;
+        family.push(bob);
+        bob.age = 41;
         int bobAge = family[1].age;
-        Assert.equal(bobAge, 2, "v2 should be deep copied");
+        Assert.equal(bobAge, 40, "bobAge should be remain the same");
     }
 
     function testArray() public {
