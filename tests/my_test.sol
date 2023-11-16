@@ -6,77 +6,77 @@ import "hardhat/console.sol";
 import "../contracts/storage.sol";
 
 contract BallotTest {
-    struct  S {
-        int a;
-        bool b;
+    struct Person {
+        int age;
+        bool isMale;
     }
 
-    S s3;
-    S[] s5;
+    Person alice;
+    Person[] family;
 
     function testStorage() public {
-        s5.push(s3);
-        s3.a = 1;
-        S memory s0;
-        s0.a = 2;
-        s5.push(s0);
-        s0.a = 3;
+        family.push(alice);
+        alice.age = 1;
+        Person memory bob;
+        bob.age = 2;
+        family.push(bob);
+        bob.age = 3;
 
-        int v1 = s5[0].a;
-        Assert.equal(v1, 0, "v1 should be deep copied");
+        int aliceAge = family[0].age;
+        Assert.equal(aliceAge, 0, "v1 should be deep copied");
 
-        int v2 = s5[1].a;
-        Assert.equal(v2, 2, "v2 should be deep copied");
+        int bobAge = family[1].age;
+        Assert.equal(bobAge, 2, "v2 should be deep copied");
     }
 
     function testArray() public {
-        S[] memory lst = new S[](10);
-        lst[1] = lst[0];
-        lst[0].a = 1;
+        Person[] memory friends = new Person[](10);
+        friends[1] = friends[0];
+        friends[0].age = 1;
 
-        int v1 = lst[1].a;
+        int v1 = friends[1].age;
         Assert.equal(v1, 1, "v1 should be a shallow copied");
     }
 
     function testShallowStruct() public {
-        S memory s0;
-        S memory s1;
+        Person memory eve;
+        Person memory carol;
 
-        s1 = s0;
-        s0.a = 1;
+        carol = eve;
+        eve.age = 1;
 
-        int v1 = s1.a;
+        int v1 = carol.age;
         Assert.equal(v1, 1, "v1 should be shallowed copied");
     }
 
-    int[] public arrayStorage;
+    int[] public ages;
 
     function testUsingArrayStorage() public {
-        arrayStorage.push(0);
-        arrayStorage.push(1);
+        ages.push(0);
+        ages.push(1);
 
-        uint arrayLenght = arrayStorage.length;
-        Assert.equal(arrayLenght, 2, "Should added two values");
-        int arrayValue = arrayStorage[1];
+        uint agesLength = ages.length;
+        Assert.equal(agesLength, 2, "Should added two values");
+        int arrayValue = ages[1];
         Assert.equal(arrayValue, 1, "Should allow to write");
     }
 
     function testDynamicVec() public {
-        int[] memory vec1;
-        int[] memory vec2;
+        int[] memory yearsVec;
+        int[] memory numbers;
 
-        vec2 = vec1;
-        vec1 = new int[](10);
+        numbers = yearsVec;
+        yearsVec = new int[](10);
 
-        uint sizeVec2 = vec2.length;
+        uint sizeVec2 = numbers.length;
         Assert.equal(sizeVec2, 0, "did not copy vec2");
-        
-        vec2 = vec1;
-        uint sizeVec2N = vec2.length;
+
+        numbers = yearsVec;
+        uint sizeVec2N = numbers.length;
         Assert.equal(sizeVec2N, 10, "copied vec2");
 
-        vec1[0] = 1;
-        int vec2p0 = vec2[0];
+        yearsVec[0] = 1;
+        int vec2p0 = numbers[0];
         Assert.equal(vec2p0, 1, "shallow embedding");
     }
 
@@ -93,9 +93,9 @@ contract BallotTest {
         matrix1[0][0] = 1;
         matrix2[0] = matrix1[0];
 
-        int v2 = matrix2[0][0];
+        int v200 = matrix2[0][0];
 
-        Assert.equal(v2, 1, "Should shallow copy");
+        Assert.equal(v200, 1, "Should shallow copy");
     }
 
     function testDynamicMatrix() public {
