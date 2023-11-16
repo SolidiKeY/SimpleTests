@@ -62,6 +62,18 @@ contract BallotTest {
         Assert.equal(arrayValue, 1, "Should allow to write");
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     function testDynamicVec() public {
         int[] memory yearsVec;
         int[] memory numbers;
@@ -132,6 +144,11 @@ contract BallotTest {
         int m10 = matrix[1][0];
         Assert.equal(m10, 2, "should shallow copy the result");
     }
+
+
+
+
+
 
     int[5][10] SFMatrix1;
     int[5][10] SFMatrix2;
