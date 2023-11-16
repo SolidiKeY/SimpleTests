@@ -33,10 +33,10 @@ contract BallotTest {
     function testArray() public {
         Person[] memory friends = new Person[](10);
         friends[1] = friends[0];
-        friends[0].age = 1;
+        friends[0].age = 20;
 
-        int v1 = friends[1].age;
-        Assert.equal(v1, 1, "v1 should be a shallow copied");
+        int friendAge1 = friends[1].age;
+        Assert.equal(friendAge1, 20, "friendAge1 should be a shallow copied");
     }
 
     function testShallowStruct() public {
@@ -44,10 +44,10 @@ contract BallotTest {
         Person memory carol;
 
         carol = eve;
-        eve.age = 1;
+        eve.age = 20;
 
         int v1 = carol.age;
-        Assert.equal(v1, 1, "v1 should be shallowed copied");
+        Assert.equal(v1, 20, "Carol should be shallower copied");
     }
 
     int[] public ages;
@@ -69,16 +69,16 @@ contract BallotTest {
         numbers = yearsVec;
         yearsVec = new int[](10);
 
-        uint sizeVec2 = numbers.length;
-        Assert.equal(sizeVec2, 0, "did not copy vec2");
+        uint numbersSize = numbers.length;
+        Assert.equal(numbersSize, 0, "did not copy yearsVec");
 
         numbers = yearsVec;
-        uint sizeVec2N = numbers.length;
-        Assert.equal(sizeVec2N, 10, "copied vec2");
+        numbersSize = numbers.length;
+        Assert.equal(numbersSize, 10, "copied yearsVec");
 
         yearsVec[0] = 1;
-        int vec2p0 = numbers[0];
-        Assert.equal(vec2p0, 1, "shallow embedding");
+        int numbers0 = numbers[0];
+        Assert.equal(numbers0, 1, "shallow embedding");
     }
 
     function testMatrixDefaultValue() public {
