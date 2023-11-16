@@ -131,3 +131,12 @@ dist
 
 # Nodes additions
 .deps
+
+# Other files
+.idea
+misc.xml
+modules.xml
+vcs.xml
+**/build-info/**
+SimpleTests.iml
+**_metadata.json
