@@ -12,6 +12,8 @@ contract BallotTest {
     }
 
     Person alice;
+    Person ana;
+    Person carolina;
     Person[] family;
 
     function testStorage() public {
@@ -28,6 +30,12 @@ contract BallotTest {
         bob.age = 41;
         int bobAge = family[1].age;
         Assert.equal(bobAge, 40, "bobAge should be remain the same");
+    }
+
+    function testCanCopyStorage() public {
+        carolina.age = 20;
+        ana = carolina;
+        Assert.equal(ana.age, 20, "Should be the same age");
     }
 
     function testArray() public {
