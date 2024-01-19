@@ -16,6 +16,9 @@ contract BallotTest {
     Person carolina;
     Person[] family;
 
+    int[] vInt1;
+    int[] vInt2;
+
     function testStorage() public {
         int aliceAgeBefore = alice.age;
         Assert.equal(aliceAgeBefore, 0, "Alice age should be the default value");
@@ -36,6 +39,26 @@ contract BallotTest {
         carolina.age = 20;
         ana = carolina;
         Assert.equal(ana.age, 20, "Should be the same age");
+    }
+
+    function testCanCompare() pure public {
+        // bool aliceEqAna = alice == ana;
+        // Can not compare structure in storage
+
+        // bool sameArray = vInt1 == vInt2;
+        // Can not compare arrays in storage
+
+        Person memory pMemory1;
+        Person memory pMemory2;
+
+        // bool sameMemory = pMemory1 == pMemory2;
+        // Can not compare structures in memory
+
+        int[] memory v1;
+        int[] memory v2;
+
+        // bool v1EqV2 = v1 == v2;
+        // Can not compare arrays in memory 
     }
 
     function testArray() public {
