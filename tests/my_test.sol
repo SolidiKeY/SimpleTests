@@ -41,7 +41,7 @@ contract BallotTest {
         Assert.equal(ana.age, 20, "Should be the same age");
     }
 
-    function testCanCompare() pure public {
+    function testCanCompare() public {
         // bool aliceEqAna = alice == ana;
         // Can not compare structure in storage
 
@@ -58,7 +58,7 @@ contract BallotTest {
         int[] memory v2;
 
         // bool v1EqV2 = v1 == v2;
-        // Can not compare arrays in memory 
+        // Can not compare arrays in memory
     }
 
     function testArray() public {
