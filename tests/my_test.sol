@@ -19,6 +19,8 @@ contract BallotTest {
     int[] vInt1;
     int[] vInt2;
 
+    mapping (address => uint) public balances;
+
     function testStorage() public {
         int aliceAgeBefore = alice.age;
         Assert.equal(aliceAgeBefore, 0, "Alice age should be the default value");
@@ -199,6 +201,11 @@ contract BallotTest {
         SFDMatrix1[0][1] = 2;
         int s111 = SFDMatrix1[1][1];
         Assert.equal(s111, 0, "storage is just deep copy");
+    }
+
+    function testMap() public {
+        // Maps does not work in memory
+        // mapping (address => uint) memory bal;
     }
 
 }
