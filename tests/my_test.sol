@@ -9,6 +9,7 @@ contract BallotTest {
     struct Person {
         int age;
         bool isMale;
+        string[10] friends;
     }
 
     Person alice;
@@ -208,4 +209,10 @@ contract BallotTest {
         // mapping (address => uint) memory bal;
     }
 
+    function testAllocation() public {
+        Person memory alice;
+        alice.friends[1] = "Bob";
+        Assert.equal(alice.friends[0], "", "Default string");
+        Assert.equal(alice.friends[1], "Bob", "Assigment");
+    }
 }
