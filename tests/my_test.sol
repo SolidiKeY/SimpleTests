@@ -225,4 +225,9 @@ contract BallotTest {
         ExternalContract c = new ExternalContract();
         Assert.equal(c.getResult(), 0, "Not the same assignment");
     }
+
+    function testDifferentAssignment() public {
+        Storage s = new Storage();
+        Assert.equal(s.useDifferentAssign(), 1, "Same assignment");
+    }
 }

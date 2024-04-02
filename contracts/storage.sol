@@ -6,6 +6,7 @@ contract Storage {
     struct  S {
         int a;
         bool b;
+        int[] v;
     }
 
     S s3;
@@ -66,6 +67,20 @@ contract Storage {
 
     function assignInMemoryExt(S memory s1, S memory s2) external pure  {
         s1.a = s2.a;
+    }
+
+    function assignmentInside(S memory s1, S memory s2) pure public {
+        s1.v = s2.v;
+        s2.v[0] = 1;
+    }
+
+    function useDifferentAssign() pure public returns (int) {
+        S memory s1;
+        S memory s2;
+        s1.v = new int[](10);
+        s2.v = new int[](10);
+        assignmentInside(s1, s2);
+        return s1.v[0];
     }
 }
 
