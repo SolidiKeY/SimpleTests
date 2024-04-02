@@ -223,7 +223,23 @@ contract BallotTest {
 
     function testExternalAssignment() public {
         ExternalContract c = new ExternalContract();
-        Assert.equal(c.getResult(), 0, "Not the same assignment");
+        (int v1, int v2) = c.getResult();
+        Assert.equal(v1, 2, "v1 the same assignment");
+        Assert.equal(v2, 0, "v2 the same assignment");
+    }
+
+    function testExternalAssignment2() public {
+        ExternalContract c = new ExternalContract();
+        (int v1, int v2) = c.getResult2();
+        Assert.equal(v1, 2, "v1 the same assignment");
+        Assert.equal(v2, 1, "v2 the same assignment");
+    }
+
+    function testExternalAssignment3() public {
+        ExternalContract c = new ExternalContract();
+        (int v1, int v2) = c.getResult3();
+        Assert.equal(v1, 0, "v1 the same assignment");
+        Assert.equal(v2, 0, "v2 the same assignment");
     }
 
     function testDifferentAssignment() public {

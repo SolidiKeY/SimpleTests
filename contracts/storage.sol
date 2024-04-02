@@ -65,9 +65,31 @@ contract Storage {
         return s1.a;
     }
 
-    function assignInMemoryExt(S memory s1, S memory s2) external pure  {
-        s1.a = s2.a;
+    event LOG(int valA);
+
+    function assignInMemoryExt(S memory s1, S memory s2) external returns (int) {
+        s1 = s2;
+        s1.a = 1;
+        s2.a = 2;
+        emit LOG(s1.a);
+        return s1.a;
     }
+
+    function assignInMemoryExt2(S memory s1) external returns (int) {
+        s1.a++;
+        return s1.a;
+    }
+
+    function assignInMemoryExt3(S memory s1, S memory s2) external returns (int) {
+        s2.a++;
+        return s1.a;
+    }
+
+    //  function assignInMemoryExt4(S calldata s1, S calldata s2) external returns (int) {
+    //     s1 = s2;
+    //     s2.a = 5;
+    //     return s1.a;
+    // }
 
     function assignmentInside(S memory s1, S memory s2) pure public {
         s1.v = s2.v;
@@ -92,12 +114,27 @@ contract ExternalContract
       obj = new Storage();
    }  
    
-   function getResult() public view returns (int) 
+   function getResult() public returns (int, int) 
    {
         Storage.S memory s1;
         Storage.S memory s2;
         s2.a = 1;
-        obj.assignInMemoryExt(s1, s2);
-        return s1.a;
+        int s1a = obj.assignInMemoryExt(s1, s2);
+        return (s1a, s1.a);
+   }
+
+    function getResult2() public returns (int, int) 
+   {
+        Storage.S memory s1;
+        s1.a = 1;
+        int s1a = obj.assignInMemoryExt2(s1);
+        return (s1a, s1.a);
+   }
+
+    function getResult3() public returns (int, int) 
+   {
+        Storage.S memory s1;
+        int s1a = obj.assignInMemoryExt3(s1, s1);
+        return (s1a, s1.a);
    }
 }
