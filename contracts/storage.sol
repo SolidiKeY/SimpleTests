@@ -51,4 +51,38 @@ contract Storage {
         return value;
     }
 
+
+    function assignInMemory(S memory s1, S memory s2) pure public  {
+        s1.a = s2.a;
+    }
+
+    function useAssign() pure public returns (int) {
+        S memory s1;
+        S memory s2;
+        s2.a = 1;
+        assignInMemory(s1, s2);
+        return s1.a;
+    }
+
+    function assignInMemoryExt(S memory s1, S memory s2) external pure  {
+        s1.a = s2.a;
+    }
+}
+
+contract ExternalContract  
+{
+   Storage private obj;
+   
+   constructor() {
+      obj = new Storage();
+   }  
+   
+   function getResult() public view returns (int) 
+   {
+        Storage.S memory s1;
+        Storage.S memory s2;
+        s2.a = 1;
+        obj.assignInMemoryExt(s1, s2);
+        return s1.a;
+   }
 }

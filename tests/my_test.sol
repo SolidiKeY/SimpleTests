@@ -210,9 +210,19 @@ contract BallotTest {
     }
 
     function testAllocation() public {
-        Person memory alice;
-        alice.friends[1] = "Bob";
-        Assert.equal(alice.friends[0], "", "Default string");
-        Assert.equal(alice.friends[1], "Bob", "Assigment");
+        Person memory aliceM;
+        aliceM.friends[1] = "Bob";
+        Assert.equal(aliceM.friends[0], "", "Default string");
+        Assert.equal(aliceM.friends[1], "Bob", "Assigment");
+    }
+
+    function testAssignment() public {
+        Storage s = new Storage();
+        Assert.equal(s.useAssign(), 1, "Same assignment");
+    }
+
+    function testExternalAssignment() public {
+        ExternalContract c = new ExternalContract();
+        Assert.equal(c.getResult(), 0, "Not the same assignment");
     }
 }
