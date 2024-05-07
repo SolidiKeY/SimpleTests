@@ -33,14 +33,14 @@ contract BallotTest {
         family.push(alice);
         alice.age = 20;
         int aliceAge = family[0].age;
-        Assert.equal(aliceAge, 0, "alice age should not change change");
+        Assert.equal(aliceAge, 0, "Alice age should not change change");
 
         Person memory bob;
         bob.age = 40;
         family.push(bob);
         bob.age = 41;
         int bobAge = family[1].age;
-        Assert.equal(bobAge, 40, "bobAge should be remain the same");
+        Assert.equal(bobAge, 40, "Bob age should be remain the same");
     }
 
     function testCanCopyStorage() public {
