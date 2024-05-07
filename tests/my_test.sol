@@ -6,10 +6,15 @@ import "hardhat/console.sol";
 import "../contracts/storage.sol";
 
 contract BallotTest {
+    struct Account {
+        int balance;
+    }
+
     struct Person {
         int age;
         bool isMale;
         string[10] friends;
+        Account account;
     }
 
     Person alice;
@@ -148,7 +153,7 @@ contract BallotTest {
 
         uint s10 = matrix1[0].length;
         Assert.equal(s10, 2, "matrix1 should shadow copy length");
-    
+
         int v101 = matrix1[0][1];
         Assert.equal(v101, 3, "matrix1 should shadow copy value");
     }
@@ -245,5 +250,18 @@ contract BallotTest {
     function testDifferentAssignment() public {
         Storage s = new Storage();
         Assert.equal(s.useDifferentAssign(), 1, "Same assignment");
+    }
+
+    function testStorageKeyWord() public {
+        alice.account.balance = 1;
+        Account storage accAlice = alice.account;
+        ana.account = accAlice;
+        Assert.equal(ana.account.balance, 1, "Should copy storage");
+    }
+
+    function testLinkingStorage() public {
+        Account storage accAlice = alice.account;
+        accAlice.balance = 1;
+        Assert.equal(alice.account.balance, 1, "Storage key word is a link");
     }
 }
