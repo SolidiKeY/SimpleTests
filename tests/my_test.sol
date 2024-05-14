@@ -264,4 +264,11 @@ contract BallotTest {
         accAlice.balance = 1;
         Assert.equal(alice.account.balance, 1, "Storage key word is a link");
     }
+
+    function testLinkingStorage2() public {
+        Account storage accAlice = alice.account;
+        alice.account = Account(2);
+        accAlice.balance = 1;
+        Assert.equal(alice.account.balance, 1, "Storage key word is a link");
+    }
 }
