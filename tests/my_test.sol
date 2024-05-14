@@ -265,10 +265,22 @@ contract BallotTest {
         Assert.equal(alice.account.balance, 1, "Storage key word is a link");
     }
 
-    function testLinkingStorage2() public {
+    function testLinkingStorageModification() public {
         Account storage accAlice = alice.account;
         alice.account = Account(2);
         accAlice.balance = 1;
         Assert.equal(alice.account.balance, 1, "Storage key word is a link");
+    }
+
+    function testTwoStorage() public {
+        Person storage anaCopy = ana;
+        Person storage aliceCopy = alice;
+        anaCopy.age = 20;
+        aliceCopy = anaCopy;
+        Assert.equal(alice.age, 20, "Should copy");
+        
+        aliceCopy.age = 21;
+        Assert.equal(ana.age, 21, "Alice Copy is Ana");
+        Assert.equal(alice.age, 20, "Alice Copy is Ana");
     }
 }
