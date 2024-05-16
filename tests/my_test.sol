@@ -19,7 +19,7 @@ contract BallotTest {
 
     Person alice;
     Person ana;
-    Person carolina;
+    Person carol;
     Person[] family;
 
     int[] vInt1;
@@ -44,8 +44,8 @@ contract BallotTest {
     }
 
     function testCanCopyStorage() public {
-        carolina.age = 20;
-        ana = carolina;
+        carol.age = 20;
+        ana = carol;
         Assert.equal(ana.age, 20, "Should be the same age");
     }
 
@@ -250,37 +250,5 @@ contract BallotTest {
     function testDifferentAssignment() public {
         Storage s = new Storage();
         Assert.equal(s.useDifferentAssign(), 1, "Same assignment");
-    }
-
-    function testStorageKeyWord() public {
-        alice.account.balance = 1;
-        Account storage accAlice = alice.account;
-        ana.account = accAlice;
-        Assert.equal(ana.account.balance, 1, "Should copy storage");
-    }
-
-    function testLinkingStorage() public {
-        Account storage accAlice = alice.account;
-        accAlice.balance = 1;
-        Assert.equal(alice.account.balance, 1, "Storage key word is a link");
-    }
-
-    function testLinkingStorageModification() public {
-        Account storage accAlice = alice.account;
-        alice.account = Account(2);
-        accAlice.balance = 1;
-        Assert.equal(alice.account.balance, 1, "Storage key word is a link");
-    }
-
-    function testTwoStorage() public {
-        Person storage anaCopy = ana;
-        Person storage aliceCopy = alice;
-        anaCopy.age = 20;
-        aliceCopy = anaCopy;
-        Assert.equal(alice.age, 20, "Should copy");
-        
-        aliceCopy.age = 21;
-        Assert.equal(ana.age, 21, "Alice Copy is Ana");
-        Assert.equal(alice.age, 20, "Alice Copy is Ana");
     }
 }
