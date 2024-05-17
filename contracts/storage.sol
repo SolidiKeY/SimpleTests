@@ -75,12 +75,12 @@ contract Storage {
         return s1.a;
     }
 
-    function assignInMemoryExt2(S memory s1) external returns (int) {
+    function assignInMemoryExt2(S memory s1) pure external returns (int) {
         s1.a++;
         return s1.a;
     }
 
-    function assignInMemoryExt3(S memory s1, S memory s2) external returns (int) {
+    function assignInMemoryExt3(S memory s1, S memory s2) pure  external returns (int) {
         s2.a++;
         return s1.a;
     }
@@ -123,7 +123,7 @@ contract ExternalContract
         return (s1a, s1.a);
    }
 
-    function getResult2() public returns (int, int) 
+    function getResult2() view public returns (int, int) 
    {
         Storage.S memory s1;
         s1.a = 1;
@@ -131,7 +131,7 @@ contract ExternalContract
         return (s1a, s1.a);
    }
 
-    function getResult3() public returns (int, int) 
+    function getResult3() view public returns (int, int) 
    {
         Storage.S memory s1;
         int s1a = obj.assignInMemoryExt3(s1, s1);

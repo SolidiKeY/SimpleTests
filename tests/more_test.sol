@@ -23,12 +23,16 @@ contract MoreTest {
 
     function testStorageKeyWord() public {
         alice.account.balance = 1;
+        bob.account.balance = 0;
+
         Account storage accAlice = alice.account;
         bob.account = accAlice;
         Assert.equal(bob.account.balance, 1, "Should copy storage");
     }
 
     function testLinkingStorage() public {
+        alice.account.balance = 0;
+
         Account storage accAlice = alice.account;
         accAlice.balance = 1;
         Assert.equal(alice.account.balance, 1, "Storage key word is a link");
@@ -52,8 +56,21 @@ contract MoreTest {
         Assert.equal(alice.age, 20, "Should not copy");
         
         alicePath.age = 21;
-        Assert.equal(alice.age, 20, "Alice Copy is bob");
-        Assert.equal(bob.age, 21, "Alice Copy is bob");
-        
+        Assert.equal(alice.age, 20, "Alice Copy is Bob");
+        Assert.equal(bob.age, 21, "Alice Copy is Bob");
+    }
+
+    function testStorageConcrete() public {
+        // Does not compile
+
+        // int storage aliceAgePath = alice.age;
+    }
+
+    function testSimpleDeepCopy() public {
+        bob.age = 0;
+        alice.age = 20;
+
+        bob = alice;
+        Assert.equal(bob.age, 20, "should deep copy");
     }
 }
