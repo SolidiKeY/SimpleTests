@@ -56,8 +56,20 @@ contract MoreTest {
         Assert.equal(alice.age, 20, "Should not copy");
         
         alicePath.age = 21;
-        Assert.equal(alice.age, 20, "Alice Copy is Bob");
-        Assert.equal(bob.age, 21, "Alice Copy is Bob");
+        Assert.equal(alice.age, 20, "Alice Path is Bob");
+        Assert.equal(bob.age, 21, "Alice Path is Bob");
+    }
+
+    function testChangingStorage() public {
+        alice.account.balance = 1;
+        bob.account.balance = 2;
+
+        Account storage aliceAccPath = alice.account;
+        alice.account = bob.account;
+        bob.account.balance = 3;
+        
+        Assert.equal(alice.account.balance, 2, "Should deep copy Bob");
+        Assert.equal(aliceAccPath.balance, 2, "Should deep copy Bob");
     }
 
     function testStorageConcrete() public {
