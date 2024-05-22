@@ -60,6 +60,20 @@ contract MoreTest {
         Assert.equal(bob.age, 21, "Alice Path is Bob");
     }
 
+    function testTwoStorage2() public {
+        alice.age = 20;
+        bob.age = 40;
+
+        Person storage alicePath = alice;
+        
+        alicePath = bob;
+        Assert.equal(alice.age, 20, "Should not copy");
+        
+        alicePath.age = 21;
+        Assert.equal(alice.age, 20, "Alice Path is Bob");
+        Assert.equal(bob.age, 21, "Alice Path is Bob");
+    }
+
     function testChangingStorage() public {
         alice.account.balance = 1;
         bob.account.balance = 2;
