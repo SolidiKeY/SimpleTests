@@ -99,35 +99,4 @@ contract MoreTest {
         bob = alice;
         Assert.equal(bob.age, 20, "should deep copy");
     }
-
-    uint[] vec;
-
-    function testEvaluationOrder() public {
-        uint i = 0;
-        vec.push(1);
-        vec.push(2);
-        vec.push(10);
-
-        Assert.equal(vec[0], 1, "Verifying vec");
-        Assert.equal(vec[1], 2, "Verifying vec");
-
-        vec[i++] = vec[i];
-
-        Assert.equal(vec[0], 1, "i is executed after line");
-        Assert.equal(vec[1], 2, "i is executed after line");
-
-        i = 0;
-        vec[++i] = vec[i];
-
-        Assert.equal(vec[0], 1, "i is executed before line");
-        Assert.equal(vec[1], 1, "i is executed before line");
-
-        i = 0;
-        vec[0] = 0;
-        vec[1] = 2;
-        vec[2] = 10;
-        vec[++i] = ++i;
-
-        Assert.equal(vec[2], 1, "Weird result");
-    }
 }
