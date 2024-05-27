@@ -54,4 +54,28 @@ contract EvaluationOrderTest {
 
         Assert.equal(vec[1], 0, "Evaluation in right before");
     }
+
+    function testEvaluationBothRightLeft() public {
+        uint i = 0;
+        delete vec;
+        vec.push(100);
+        vec.push(100);
+        vec.push(100);
+
+        vec[++i] = i++;
+
+        Assert.equal(vec[2], 0, "Evaluation in right before");
+    }
+
+    function testEvaluationBothRightLeft2() public {
+        uint i = 0;
+        delete vec;
+        vec.push(100);
+        vec.push(100);
+        vec.push(100);
+
+        vec[i++] = ++i;
+
+        Assert.equal(vec[1], 1, "Evaluation in right before");
+    }
 }
