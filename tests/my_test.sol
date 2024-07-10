@@ -27,6 +27,13 @@ contract BallotTest {
 
     mapping (address => uint) public balances;
 
+    function testMemoryWithoutNew() public {
+        Person memory bob;
+        bob.account.balance = 10;
+
+        Assert.equal(bob.account.balance, 10, "Memory does not need inicialization");
+    }
+
     function testStorage() public {
         int aliceAgeBefore = alice.age;
         Assert.equal(aliceAgeBefore, 0, "Alice age should be the default value");
