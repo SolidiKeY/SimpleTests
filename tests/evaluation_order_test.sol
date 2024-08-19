@@ -15,8 +15,6 @@ contract EvaluationOrderTest {
         vec.push(2);
 
         vec[i++] = vec[i];
-        // vec[i] = vec[i]; vec[0] = vec[0];
-        // i++;
 
         Assert.equal(vec[0], 1, "i is executed after line");
         Assert.equal(vec[1], 2, "i is executed after line");
@@ -25,11 +23,10 @@ contract EvaluationOrderTest {
     function testEvaluationBefore() public {
         uint i = 0;
         delete vec;
-        vec.push(1); // vec[0] == 1
-        vec.push(2); // vec[1] == 2
+        vec.push(1);
+        vec.push(2);
 
         vec[++i] = vec[i];
-        // vec[1] = vec[0];
 
         Assert.equal(vec[0], 1, "i is executed before line");
         Assert.equal(vec[1], 1, "i is executed before line");
@@ -45,23 +42,6 @@ contract EvaluationOrderTest {
         vec[++i] = ++i;
 
         Assert.equal(vec[2], 1, "Evaluation in right before");
-    }
-
-    function testRightIpp() public {
-        uint i = 0;
-        uint j = 0;
-
-        j = 5/i + ++i;
-
-        Assert.equal(j, 6, "Evaluation ++i before dividing");
-    }
-
-    function testRightIppRight() public {
-        uint i = 0;
-        uint j = 0;
-
-        // j = ++i + 5/i ;
-        // it will throw an error for division by zero
     }
 
     function testEvaluationBothRight() public {

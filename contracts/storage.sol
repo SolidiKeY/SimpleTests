@@ -112,7 +112,7 @@ contract ExternalContract
    
    constructor() {
       obj = new Storage();
-   }  
+   }
    
    function getResult() public returns (int, int) 
    {
@@ -137,4 +137,30 @@ contract ExternalContract
         int s1a = obj.assignInMemoryExt3(s1, s1);
         return (s1a, s1.a);
    }
+}
+
+contract Called {
+    function callArrays(uint[] memory v1, uint[] memory v2) pure public returns (uint) {
+        v1[0] = 1;
+
+        assert(v2[0] == 0);
+        return v2[0];
+    }
+}
+
+contract Caller {
+    Called private obj;
+   
+   constructor() {
+      obj = new Called();
+   }
+
+    function call(/*uint[] memory v1, uint[] memory v2*/) view public returns (uint) {
+        uint[] memory v1 = new uint[](10);
+        uint[] memory v2 = new uint[](10);
+
+        v1 = v2;
+
+        return obj.callArrays(v1, v2);
+    }
 }
