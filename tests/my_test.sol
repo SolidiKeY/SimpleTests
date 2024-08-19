@@ -27,11 +27,20 @@ contract BallotTest {
 
     mapping (address => uint) public balances;
 
-    function testMemoryWithoutNew() public {
+    function testMemory() public {
+        Person memory alice;
         Person memory bob;
-        bob.account.balance = 10;
 
-        Assert.equal(bob.account.balance, 10, "Memory does not need inicialization");
+        alice.account.balance = 10;
+        bob.account.balance = 20;
+        Account memory acc = bob.account;
+
+        alice.account = bob.account;
+        Assert.equal(acc.balance, 20, "Same acc");
+
+        acc.balance = 30;
+        Assert.equal(alice.account.balance, 30, "Same alice");
+        Assert.equal(bob.account.balance, 30, "Same bob");
     }
 
     function testStorage() public {
