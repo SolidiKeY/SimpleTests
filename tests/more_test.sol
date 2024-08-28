@@ -99,4 +99,17 @@ contract MoreTest {
         bob = alice;
         Assert.equal(bob.age, 20, "should deep copy");
     }
+
+    
+    function testDeleteMemory() public {
+        int[10] memory v;
+
+        v[0] = 1;
+
+        Assert.equal(v[0], 1, "should change vector");
+
+        delete v;
+
+        Assert.equal(v[0], 0, "should delete vector");
+    }
 }
