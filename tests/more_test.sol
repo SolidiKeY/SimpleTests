@@ -21,6 +21,21 @@ contract MoreTest {
     Person bob;
     Person[] family;
 
+    function testSimpleDefault() public {
+        Assert.equal(alice.account.balance, 0, "Should be default");
+    }
+
+    function testSimpleDeepCopyMod() public {
+        alice.account.balance = 1;
+        bob.account.balance = 2;
+
+        bob.account = alice.account;
+        Assert.equal(bob.account.balance, 1, "Should copy storage");
+
+        alice.account.balance = 3;
+        Assert.equal(bob.account.balance, 1, "Should not modify deep copy");
+    }
+
     function testStorageKeyWord() public {
         alice.account.balance = 1;
         bob.account.balance = 0;
