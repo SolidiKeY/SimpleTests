@@ -140,3 +140,4 @@ vcs.xml
 **/build-info/**
 SimpleTests.iml
 **_metadata.json
+**/artifacts/**
