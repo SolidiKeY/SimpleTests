@@ -39,9 +39,11 @@ contract DeleteMemoryTest {
         bob = alice;
 
         alice.account.balance = 10;
+        alice.age = 20;
 
         delete alice;
 
+        Assert.equal(bob.age, 20, "Should not destroy bob");
         Assert.equal(bob.account.balance, 10, "Should not destroy bob");
     }
 }
