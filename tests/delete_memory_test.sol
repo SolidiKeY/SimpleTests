@@ -16,6 +16,12 @@ contract DeleteMemoryTest {
         string[10] friends;
         Account account;
     }
+    
+    function testDeleteField() public {
+        int x = 10;
+        delete x;
+        Assert.equal(x, 0, "Should delete x");
+    }
 
     function testDeleteArray() public {
         int[] memory u = new int[](10);
@@ -61,16 +67,18 @@ contract DeleteMemoryTest {
         alice.account.balance = 10;
         alice.age = 20;
 
-        // delete alice;
+        delete alice;
 
-        // Assert.equal(bob.age, 20, "Should not destroy bob");
-        // Assert.equal(bob.account.balance, 10, "Should not destroy bob");
+        Assert.equal(bob.age, 20, "Should not destroy bob");
+        Assert.equal(bob.account.balance, 10, "Should not destroy bob");
+    }
+
+    function testDeletePersonField() public {
+        Person memory alice;
+
+        alice.age = 20;
 
         delete alice.age;
         Assert.equal(alice.age, 0, "Should delete alice age");
-
-        int x = 10;
-        delete x;
-        Assert.equal(x, 0, "Should delete x");
     }
 }
