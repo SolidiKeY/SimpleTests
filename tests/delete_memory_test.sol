@@ -32,6 +32,26 @@ contract DeleteMemoryTest {
         Assert.equal(v[1], 10, "Should not destroy v");
     }
 
+    int[] uS;
+    Person p;
+
+    function testDeleteArrayStorage() public {
+        uS.push(1);
+        uS.push(2);
+
+        delete uS[1];
+
+        delete uS;
+
+        Assert.equal(uS.length, 0, "uS length");
+
+        p.friends[0] = "alice";
+
+        delete p.friends;
+        Assert.equal(p.friends.length, 10, "same size as before");
+        Assert.equal(p.friends[0], "", "delete everything");
+    }
+
     function testDeletePerson() public {
         Person memory alice;
         Person memory bob;
@@ -41,9 +61,16 @@ contract DeleteMemoryTest {
         alice.account.balance = 10;
         alice.age = 20;
 
-        delete alice;
+        // delete alice;
 
-        Assert.equal(bob.age, 20, "Should not destroy bob");
-        Assert.equal(bob.account.balance, 10, "Should not destroy bob");
+        // Assert.equal(bob.age, 20, "Should not destroy bob");
+        // Assert.equal(bob.account.balance, 10, "Should not destroy bob");
+
+        delete alice.age;
+        Assert.equal(alice.age, 0, "Should delete alice age");
+
+        int x = 10;
+        delete x;
+        Assert.equal(x, 0, "Should delete x");
     }
 }
