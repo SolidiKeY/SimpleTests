@@ -21,6 +21,10 @@ contract MoreTest {
     Person bob;
     Person[] family;
 
+    // Only elementary values can be in the map 
+    // mapping(Person => int) balances;
+    mapping(int => Person) personValue;
+
     function testSimpleDefault() public {
         Assert.equal(alice.account.balance, 0, "Should be default");
     }
@@ -126,5 +130,11 @@ contract MoreTest {
         delete v;
 
         Assert.equal(v[0], 0, "should delete vector");
+    }
+
+    function testRevert() public {
+        delete family;
+
+        // family.pop();
     }
 }

@@ -46,4 +46,14 @@ contract DeleteMemoryTest {
         Assert.equal(bob.age, 20, "Should not destroy bob");
         Assert.equal(bob.account.balance, 10, "Should not destroy bob");
     }
+
+    function testDeleteField() public {
+        Person memory alice;
+
+        alice.age = 20;
+
+        delete alice.age;
+
+        Assert.equal(alice.age, 0, "Should destroy alice age");
+    }
 }
