@@ -90,4 +90,28 @@ contract DeleteStorageTest {
         s.push();
         Assert.equal(s[s.length - 1][0], 0x42, "same value as before");
     }
+
+    function testRemoveMatrixNoPointer() public {
+        delete s;
+
+        s.push();
+        s[0].push(0x42);
+        s.pop();
+        s.push();
+
+        Assert.equal(s[0].length, 0, "array is erased");
+    }
+    
+    function testRemoveMatrixPushBefore() public {
+        delete s;
+
+        s.push();
+        uint[] storage ptr = s[0];
+        ptr.push(0x42);
+        s.pop();
+        s.push();
+
+        Assert.equal(s[0].length, 0, "array is erased");
+        Assert.equal(ptr.length, 0, "ptr should be deleted");
+    }
 }
