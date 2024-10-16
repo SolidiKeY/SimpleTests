@@ -29,7 +29,19 @@ contract DeleteStorageTest {
         delete v;
 
         Assert.equal(v.length, 0, "v length should be zero");
+    }
 
+    function testDeletePushArray() public {
+        v.push(1);
+
+        delete v;
+
+        v.push();
+
+        Assert.equal(v[0], 0, "v should be deleted");
+    }
+
+    function testDeleteStructArrayStorage() public {
         p.friends[0] = "alice";
 
         delete p.friends;
