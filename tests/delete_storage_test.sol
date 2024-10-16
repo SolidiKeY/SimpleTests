@@ -65,6 +65,8 @@ contract DeleteStorageTest {
         s.push();
         // Stores a pointer to the last array element of s.
         uint[] storage ptr = s[s.length - 1];
+        // Add more to ptr
+        ptr.push(0x41);
         // Removes the last array element of s.
         s.pop();
         // Writes to the array element that is no longer within the array.
