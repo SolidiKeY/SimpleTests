@@ -76,6 +76,8 @@ contract DeleteStorageTest {
         Assert.equal(ptr.length, 0, "deleted ptr");
         ptr.push(42);
 
+        Assert.equal(ptr[0], 42, "Saved to Storage");
+
         // st = store(store(st, s, empty), s.at(0).at(0), 42)
 
         s.push();
