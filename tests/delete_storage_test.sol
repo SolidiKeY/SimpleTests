@@ -69,22 +69,15 @@ contract DeleteStorageTest {
         delete s;
 
         s.push();
-        // Stores a pointer to the last array element of s.
         uint[] storage ptr = s[0];
-        // Add more to ptr
         ptr.push(41);
-        // Removes the last array element of s.
         s.pop();
-        // st = store(store(st, s.length, 0), s, empty)
 
         Assert.equal(ptr.length, 0, "deleted ptr");
-        // Writes to the array element that is no longer within the array.
         ptr.push(42);
 
         // st = store(store(st, s, empty), s.at(0).at(0), 42)
 
-        // Adding a new element to ``s`` now will not add an empty array, but
-        // will result in an array of length 1 with ``0x42`` as element.
         s.push();
         // st = store(store(store(st, s, empty), s.at(0).at(0), 42), s.length, 1) 
 
@@ -95,14 +88,9 @@ contract DeleteStorageTest {
         delete s;
 
         s.push();
-        // Stores a pointer to the last array element of s.
         uint[] storage ptr = s[0];
-        // Delete s.
         delete s;
-        // Writes to the array element that is no longer within the array.
         ptr.push(42);
-        // Adding a new element to ``s`` now will not add an empty array, but
-        // will result in an array of length 1 with 42 as element.
         s.push();
         Assert.equal(s[0][0], 42, "same value as before");
     }
