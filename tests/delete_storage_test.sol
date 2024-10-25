@@ -88,6 +88,7 @@ contract DeleteStorageTest {
         delete s;
 
         s.push();
+        s.push();
         uint[] storage ptr = s[0];
         delete s;
         ptr.push(42);
