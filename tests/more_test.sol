@@ -3,7 +3,7 @@
 pragma solidity >=0.7.0 <0.9.0;
 import "remix_tests.sol"; // this import is automatically injected by Remix.
 import "hardhat/console.sol";
-import "../contracts/storage.sol";
+import "../contracts/Storage.sol";
 
 contract MoreTest {
     struct Account {
