@@ -301,6 +301,7 @@
     "negotiator": "^0.6.3",
     "next-tick": "^1.1.0",
     "no-case": "^2.3.2",
+    "node": "^23.1.0",
     "node-addon-api": "^2.0.2",
     "node-fetch": "^2.7.0",
     "node-gyp-build": "^4.6.1",
