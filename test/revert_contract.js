@@ -2,7 +2,7 @@ const RevertContract = artifacts.require("RevertContract");
 
 async function getAllNames() {
   const revertInstance = await RevertContract.deployed();
-  return Object.keys(revertInstance).filter(key => key.endsWith("TestRevert"));
+  return Object.keys(revertInstance).filter(key => key.startsWith("testRevert"));
 }
 
 function testRevert(revertTerm) {
