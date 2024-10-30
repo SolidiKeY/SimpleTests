@@ -1,13 +1,17 @@
 const RevertContract = artifacts.require("RevertContract");
 
-/*
- * uncomment accounts to access the test accounts made available by the
- * Ethereum client
- * See docs: https://www.trufflesuite.com/docs/truffle/testing/writing-tests-in-javascript
- */
+function testRevert(revertTerm) {
+  return async () => {
+    const revertInstance = await RevertContract.deployed();
+    const revRevert = revertInstance[revertTerm];
+    try{
+      await revRevert.call();
+    }
+    catch{return;}
+    assert.fail("The function should revert");
+  }
+}
+
 contract("RevertContract", function (/* accounts */) {
-  it("should assert true", async function () {
-    await RevertContract.deployed();
-    return assert.isTrue(true);
-  });
+  it("Check if contracts revert.", testRevert("shouldRevert"));
 });

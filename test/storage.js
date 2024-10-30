@@ -22,5 +22,4 @@ contract("Storage", function (/* accounts */) {
     await Storage.deployed();
     return assert.isTrue(true);
   });
-  it("Check if contracts revert.", testRevert("shouldRevert"));
 });

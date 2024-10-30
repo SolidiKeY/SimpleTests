@@ -103,10 +103,6 @@ contract Storage {
       assignmentInside(s1, s2);
       return s1.v[0];
   }
-
-  function shouldRevert() public pure {
-    assert(false);
-  }
 }
 
 contract ExternalContract  
