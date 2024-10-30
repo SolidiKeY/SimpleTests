@@ -131,10 +131,4 @@ contract MoreTest {
 
         Assert.equal(v[0], 0, "should delete vector");
     }
-
-    function testRevert() public {
-        delete family;
-
-        // family.pop();
-    }
 }
