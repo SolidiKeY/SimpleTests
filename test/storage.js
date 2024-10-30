@@ -1,12 +1,15 @@
 const Storage = artifacts.require("Storage");
 
-async function testRevert(revertTerm) {
-  const storageInstance = await Storage.deployed();
-  try{
-    const storageRevert = await storageInstance[revertTerm].call();
+function testRevert(revertTerm) {
+  return async () => {
+    const storageInstance = await Storage.deployed();
+    const storageRevert = storageInstance[revertTerm];
+    try{
+      await storageRevert.call();
+    }
+    catch{return;}
+    assert.fail("The function should revert");
   }
-  catch{return;}
-  assert.fail("The function should revert");
 }
 
 /*
@@ -19,5 +22,5 @@ contract("Storage", function (/* accounts */) {
     await Storage.deployed();
     return assert.isTrue(true);
   });
-  it("Check if contracts revert.", () => testRevert("shouldRevert"));
+  it("Check if contracts revert.", testRevert("shouldRevert"));
 });
