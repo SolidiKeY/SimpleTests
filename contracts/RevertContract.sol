@@ -5,7 +5,7 @@ contract RevertContract {
   constructor() public {
   }
 
-  function shouldRevert() public pure {
+  function firstTestRevert() public pure {
     assert(false);
   }
 }

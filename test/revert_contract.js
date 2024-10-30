@@ -1,5 +1,10 @@
 const RevertContract = artifacts.require("RevertContract");
 
+async function getAllNames() {
+  const revertInstance = await RevertContract.deployed();
+  return Object.keys(revertInstance).filter(key => key.endsWith("TestRevert"));
+}
+
 function testRevert(revertTerm) {
   return async () => {
     const revertInstance = await RevertContract.deployed();
@@ -12,6 +17,13 @@ function testRevert(revertTerm) {
   }
 }
 
+async function verify(){
+  var keys = await getAllNames();
+  keys.forEach(key =>{
+    it(`Check the function ${key} reverts`, testRevert(key));
+  })
+}
+
 contract("RevertContract", function (/* accounts */) {
-  it("Check if contracts revert.", testRevert("shouldRevert"));
+  verify();
 });
