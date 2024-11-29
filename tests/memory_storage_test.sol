@@ -9,6 +9,15 @@ contract MemoryStorageTest {
     uint xS;
     uint[] vS;
 
+    struct Account {
+        int balance;
+    }
+
+    struct Person {
+        int age;
+        Account account;
+    }
+
     function testSimpleCopyFromStorage() public {
         xS = 1;
 
@@ -48,6 +57,24 @@ contract MemoryStorageTest {
         
         Assert.equal(vM1[0], 1, "Does not shallow storage");
         Assert.equal(vM2[0], 0, "Removed shallow copy");
+    }
+
+    Person carol;
+
+    function testShallowCopy() public {
+        delete carol;
+
+        Person memory alice;
+        Person memory bob;
+
+        alice.account = bob.account;
+
+        carol.account.balance = 10;
+
+        alice.account = carol.account;
+
+        Assert.equal(alice.account.balance, 10, "Copied storage");
+        Assert.equal(bob.account.balance, 0, "Copied storage");
     }
 
 }
