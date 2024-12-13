@@ -103,6 +103,16 @@ contract Storage {
       assignmentInside(s1, s2);
       return s1.v[0];
   }
+
+  function createArray(uint n) pure public returns (int) {
+    int[] memory v = new int[](n);
+    int[10] memory v2;
+    
+    // It does not compile
+    //int[n] memory v3;
+
+    return v[0] + v2[1];
+  }
 }
 
 contract ExternalContract  
