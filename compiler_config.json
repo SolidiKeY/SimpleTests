@@ -1,0 +1,8 @@
+{
+    "settings": {
+        "modelChecker": {
+            "engine": "all",
+            "targets": ["underflow", "overflow"]
+        }
+    }
+}
