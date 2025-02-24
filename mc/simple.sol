@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 
 pragma solidity >=0.7.0 <0.9.0;
-import "../contracts/Storage.sol";
+// import "../contracts/Storage.sol";
 
 contract Simple {
     struct Account {
@@ -15,7 +15,7 @@ contract Simple {
         Account account;
     }
 
-    // Person alice;
+    Person alice;
     Person ana;
     Person carol;
     Person[] family;
@@ -25,21 +25,21 @@ contract Simple {
 
     mapping (address => uint) public balances;
 
-    function testMemory() public {
-        Person memory alice;
-        Person memory bob;
+    // function testMemory() public {
+    //     Person memory alice;
+    //     Person memory bob;
 
-        alice.account.balance = 10;
-        bob.account.balance = 20;
-        Account memory acc = bob.account;
+    //     alice.account.balance = 10;
+    //     bob.account.balance = 20;
+    //     Account memory acc = bob.account;
 
-        alice.account = bob.account;
-        assert(acc.balance == 20);
+    //     alice.account = bob.account;
+    //     assert(acc.balance == 20);
 
-        acc.balance = 30;
-        assert(alice.account.balance == 30);
-        assert(bob.account.balance == 30);
-    }
+    //     acc.balance = 30;
+    //     assert(alice.account.balance == 30);
+    //     assert(bob.account.balance == 30);
+    // }
 
     // function testStorage() public {
     //     int aliceAgeBefore = alice.age;
@@ -57,11 +57,11 @@ contract Simple {
     //     assert(bobAge == 40);
     // }
 
-    // function testCanCopyStorage() public {
-    //     carol.age = 20;
-    //     ana = carol;
-    //     assert(ana.age == 20);
-    // }
+    function testCanCopyStorage() public {
+        carol.age = 20;
+        ana = carol;
+        assert(ana.age == 20);
+    }
 
     // function testCanCompare() public {
     //     // bool aliceEqAna = alice == ana;
@@ -94,26 +94,28 @@ contract Simple {
 
     // function testShallowStruct() public {
     //     Person memory eve;
-    //     Person memory carol;
+    //     Person memory caroll;
 
-    //     carol = eve;
+    //     caroll = eve;
     //     eve.age = 20;
 
     //     int v1 = carol.age;
     //     assert(v1 == 20);
     // }
 
-    // int[] public ages;
+    int[] public ages;
 
-    // function testUsingArrayStorage() public {
-    //     ages.push(0);
-    //     ages.push(1);
+    function testUsingArrayStorage() public {
+        delete ages;
 
-    //     uint agesLength = ages.length;
-    //     assert(agesLength == 2);
-    //     int arrayValue = ages[1];
-    //     assert(arrayValue == 1);
-    // }
+        ages.push(0);
+        ages.push(1);
+
+        uint agesLength = ages.length;
+        assert(agesLength == 2);
+        int arrayValue = ages[1];
+        assert(arrayValue == 1);
+    }
 
     // function testDynamicVec() public {
     //     int[] memory yearsVec;
@@ -134,23 +136,23 @@ contract Simple {
     //     assert(numbers0 == 1);
     // }
 
-    // function testMatrixDefaultValue() public {
-    //     int[5][10] memory matrix;
-    //     int v = matrix[0][0];
-    //     assert(v == 0);
-    // }
+    function testMatrixDefaultValue() public {
+        int[5][10] memory matrix;
+        int v = matrix[0][0];
+        assert(v == 0);
+    }
 
-    // function testMatrixCopy() public {
-    //     int[5][10] memory matrix1;
-    //     int[5][10] memory matrix2;
+    function testMatrixCopy() public {
+        int[5][10] memory matrix1;
+        int[5][10] memory matrix2;
 
-    //     matrix1[0][0] = 1;
-    //     matrix2[0] = matrix1[0];
+        matrix1[0][0] = 1;
+        matrix2[0] = matrix1[0];
 
-    //     int v200 = matrix2[0][0];
+        int v200 = matrix2[0][0];
 
-    //     assert(v200 == 1);
-    // }
+        assert(v200 == 1);
+    }
 
     // function testDynamicMatrix() public {
     //     int[][] memory matrix1;
@@ -186,83 +188,40 @@ contract Simple {
     //     assert(m10 == 2);
     // }
 
-    // int[5][10] SFMatrix1;
-    // int[5][10] SFMatrix2;
+    int[5][10] SFMatrix1;
+    int[5][10] SFMatrix2;
 
-    // function testStorageMatrix() public {
-    //     int defaultValue = SFMatrix1[0][0];
-    //     assert(defaultValue == 0);
+    function testStorageMatrix() public {
+        int defaultValue = SFMatrix1[0][0];
+        assert(defaultValue == 0);
 
-    //     SFMatrix1[0][0] = 1;
+        SFMatrix1[0][0] = 1;
 
-    //     SFMatrix2 = SFMatrix1;
+        SFMatrix2 = SFMatrix1;
 
-    //     int s00 = SFMatrix2[0][0];
-    //     assert(s00 == 1);
+        int s00 = SFMatrix2[0][0];
+        assert(s00 == 1);
 
-    //     SFMatrix1[0][1] = 2;
-    //     int s01 = SFMatrix2[0][1];
-    //     assert(s01 == 0);
-    // }
+        SFMatrix1[0][1] = 2;
+        int s01 = SFMatrix2[0][1];
+        assert(s01 == 0);
+    }
 
-    // int[][5] SFDMatrix1;
-    // int[][5] SFDMatrix2;
+    int[][5] SFDMatrix1;
+    int[][5] SFDMatrix2;
 
-    // function testStorageFixedMatrix() public {
-    //     SFDMatrix1[0] = new int[](10);
-    //     SFDMatrix2 = SFDMatrix1;
+    function testStorageFixedMatrix() public {
+        SFDMatrix1[0] = new int[](10);
+        SFDMatrix2 = SFDMatrix1;
 
-    //     SFDMatrix1[0][0] = 1;
-    //     int s200 = SFDMatrix2[0][0];
-    //     assert(s200 == 0);
+        SFDMatrix1[0][0] = 1;
+        int s200 = SFDMatrix2[0][0];
+        assert(s200 == 0);
 
-    //     SFDMatrix1[1] = SFDMatrix1[0];
+        SFDMatrix1[1] = SFDMatrix1[0];
 
-    //     SFDMatrix1[0][1] = 2;
-    //     int s111 = SFDMatrix1[1][1];
-    //     assert(s111 == 0);
-    // }
-
-    // function testMap() public {
-    //     // Maps does not work in memory
-    //     // mapping (address => uint) memory bal;
-    // }
-
-    // function testAllocation() public {
-    //     Person memory aliceM;
-    //     aliceM.friends[1] = "Bob";
-    //     // assert(aliceM.friends[0] == "");
-    //     // assert(aliceM.friends[1] == "Bob");
-    // }
-
-    // function testAssignment() public {
-    //     Storage s = new Storage();
-    //     assert(s.useAssign() == 1);
-    // }
-
-    // function testExternalAssignment() public {
-    //     ExternalContract c = new ExternalContract();
-    //     (int v1, int v2) = c.getResult();
-    //     assert(v1 == 2);
-    //     assert(v2 == 0);
-    // }
-
-    // function testExternalAssignment2() public {
-    //     ExternalContract c = new ExternalContract();
-    //     (int v1, int v2) = c.getResult2();
-    //     assert(v1 == 2);
-    //     assert(v2 == 1);
-    // }
-
-    // function testExternalAssignment3() public {
-    //     ExternalContract c = new ExternalContract();
-    //     (int v1, int v2) = c.getResult3();
-    //     assert(v1 == 0);
-    //     assert(v2 == 0);
-    // }
-
-    // function testDifferentAssignment() public {
-    //     Storage s = new Storage();
-    //     assert(s.useDifferentAssign() == 1);
-    // }
+        SFDMatrix1[0][1] = 2;
+        int s111 = SFDMatrix1[1][1];
+        assert(s111 == 0);
+    }
 }
