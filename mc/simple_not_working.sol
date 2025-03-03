@@ -24,7 +24,42 @@ contract Simple {
 
     mapping (address => uint) public balances;
 
-    function testMemory() public {
+    function testMemory() pure public {
+        Person memory alice;
+        Person memory bob;
+
+        alice.account.balance = 10;
+        bob.account.balance = 20;
+        // Account memory acc = bob.account;
+
+        alice.account = bob.account;
+        // assert(acc.balance == 20);
+
+        alice.account.balance = 30;
+        assert(alice.account.balance == 30);
+        assert(bob.account.balance == 30);
+    }
+
+    function testDefault() pure public {
+        Person memory alicee;
+        Person memory bobb;
+        assert(alicee.account.balance == 0);
+
+        bobb.account.balance = 10;
+        assert(alicee.account.balance == 0);
+    }
+
+    function testDefault2() pure public {
+        Person memory alicee;
+        Person memory bobb;
+        assert(alicee.account.balance == 0);
+
+        bobb.account.balance = 10;
+        bobb.account = alicee.account;
+        assert(bobb.account.balance == 0);
+    }
+
+    function testMemoryComplex() pure public {
         Person memory alice;
         Person memory bob;
 
