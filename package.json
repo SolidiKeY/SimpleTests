@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@remix-project/remix-tests": "^0.2.33",
+    "@remix-project/remix-tests": "^0.2.64",
     "nx": "16.7.4",
     "nx-cloud": "latest"
   },
@@ -356,6 +356,7 @@
     "readable-stream": "^3.6.2",
     "regenerator-runtime": "^0.14.0",
     "regexp.prototype.flags": "^1.5.0",
+    "remix-test": "^1.0.0",
     "request": "^2.88.2",
     "require-directory": "^2.1.1",
     "require-from-string": "^2.0.2",
