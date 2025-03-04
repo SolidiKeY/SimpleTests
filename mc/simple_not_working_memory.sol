@@ -32,12 +32,12 @@ contract SimpleMemory {
     }
 
     function testDefault() pure public {
-        Person memory alicee;
-        Person memory bobb;
-        assert(alicee.account.balance == 0);
+        Person memory alice;
+        Person memory bob;
+        assert(alice.account.balance == 0);
 
-        bobb.account.balance = 10;
-        assert(alicee.account.balance == 0);
+        bob.account.balance = 10;
+        assert(alice.account.balance == 0);
     }
 
     function testDefault2() pure public {
