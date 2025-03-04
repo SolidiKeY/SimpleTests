@@ -2,7 +2,8 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
-contract Simple {
+contract SimpleMemory {
+
     struct Account {
         int balance;
     }
@@ -13,16 +14,6 @@ contract Simple {
         string[10] friends;
         Account account;
     }
-
-    Person alice;
-    Person ana;
-    Person carol;
-    Person[] family;
-
-    int[] vInt1;
-    int[] vInt2;
-
-    mapping (address => uint) public balances;
 
     function testMemory() pure public {
         Person memory alice;
@@ -75,43 +66,7 @@ contract Simple {
         assert(bob.account.balance == 30);
     }
 
-    function testStorage() public {
-        int aliceAgeBefore = alice.age;
-        assert(aliceAgeBefore == 0);
-        family.push(alice);
-        alice.age = 20;
-        int aliceAge = family[0].age;
-        assert(aliceAge == 0);
-
-        Person memory bob;
-        bob.age = 40;
-        family.push(bob);
-        bob.age = 41;
-        int bobAge = family[1].age;
-        assert(bobAge == 40);
-    }
-
-    function testCanCompare() public {
-        // bool aliceEqAna = alice == ana;
-        // Can not compare structure in storage
-
-        // bool sameArray = vInt1 == vInt2;
-        // Can not compare arrays in storage
-
-        Person memory pMemory1;
-        Person memory pMemory2;
-
-        // bool sameMemory = pMemory1 == pMemory2;
-        // Can not compare structures in memory
-
-        int[] memory v1;
-        int[] memory v2;
-
-        // bool v1EqV2 = v1 == v2;
-        // Can not compare arrays in memory
-    }
-
-    function testArray() public {
+    function testArray() pure public {
         Person[] memory friends = new Person[](10);
         friends[1] = friends[0];
         friends[0].age = 20;
@@ -120,20 +75,7 @@ contract Simple {
         assert(friendAge1 == 20);
     }
 
-    function testShallowStruct() public {
-        Person memory eve;
-        Person memory caroll;
-
-        caroll = eve;
-        eve.age = 20;
-
-        int v1 = carol.age;
-        assert(v1 == 20);
-    }
-
-    int[] public ages;
-
-    function testDynamicVec() public {
+    function testDynamicVec() pure public {
         int[] memory yearsVec;
         int[] memory numbers;
 
@@ -152,7 +94,7 @@ contract Simple {
         assert(numbers0 == 1);
     }
 
-    function testDynamicMatrix() public {
+    function testDynamicMatrix() pure public {
         int[][] memory matrix1;
         int[][] memory matrix2;
 
@@ -172,7 +114,7 @@ contract Simple {
         assert(v101 == 3);
     }
 
-    function testMatrixRowCopy() public {
+    function testMatrixRowCopy() pure public {
         int[][5] memory matrix;
 
         matrix[0] = new int[](10);
