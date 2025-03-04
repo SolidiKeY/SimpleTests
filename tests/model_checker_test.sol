@@ -6,12 +6,44 @@ import "hardhat/console.sol";
 import "../mc/simple_not_working_memory.sol";
 
 contract MCTest {
+    address addr;
 
     SimpleMemory mc;
 
-    function testSimpleDefault() public {
-
+    function beforeEach() public {
+        mc = new SimpleMemory();
     }
 
+    function testMemory() public {
+        mc.testMemory();
+    }
+
+    function testDefault() public {
+        mc.testDefault();
+    }
+
+    function testDefault2() public {
+        mc.testDefault2();
+    }
+
+    function testMemoryComplex() public {
+        mc.testMemoryComplex();
+    }
+
+    function testArray() public {
+        mc.testArray();
+    }
+
+    function testDynamicVec() public {
+        mc.testDynamicVec();
+    }
+
+    function testDynamicMatrix() public {
+        mc.testDynamicMatrix();
+    }
+
+    function testMatrixRowCopy() public {
+        mc.testMatrixRowCopy();
+    }
 }
 

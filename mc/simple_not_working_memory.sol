@@ -21,10 +21,10 @@ contract SimpleMemory {
 
         alice.account.balance = 10;
         bob.account.balance = 20;
-        // Account memory acc = bob.account;
+        Account memory acc = bob.account;
 
         alice.account = bob.account;
-        // assert(acc.balance == 20);
+        assert(acc.balance == 20);
 
         alice.account.balance = 30;
         assert(alice.account.balance == 30);
