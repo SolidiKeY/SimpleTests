@@ -72,3 +72,6 @@ RUN ln -s /z3-Z3-4.8.5/build/z3 /usr/local/bin/z3
 
 ENV PATH=/scripts:${PATH}
 ENV SOLC=/solc-static-linux-0.5.17
+ENV SOLC_SOLIDIFIER=/solc-static-linux-0.5.17
+
+COPY Solidifier /scripts
