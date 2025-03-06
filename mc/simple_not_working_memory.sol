@@ -66,6 +66,17 @@ contract SimpleMemory {
         assert(bob.account.balance == 30);
     }
 
+    function testShallowStruct() pure public {
+        Person memory eve;
+        Person memory carol;
+
+        carol = eve;
+        eve.age = 20;
+
+        int v1 = carol.age;
+        assert(v1 == 20);
+    }
+
     function testArray() pure public {
         Person[] memory friends = new Person[](10);
         friends[1] = friends[0];

@@ -39,16 +39,5 @@ contract SimpleStorage {
         int bobAge = family[1].age;
         assert(bobAge == 40);
     }
-
-    function testShallowStruct() public {
-        Person memory eve;
-        Person memory caroll;
-
-        caroll = eve;
-        eve.age = 20;
-
-        int v1 = carol.age;
-        assert(v1 == 20);
-    }
 }
 
