@@ -16,6 +16,7 @@ RUN apt-get install -y mono-devel
 RUN wget https://github.com/ethereum/solidity/releases/download/v0.5.17/solc-static-linux
 RUN mv solc-static-linux solc-static-linux-0.5.17
 RUN chmod +x solc-static-linux-0.5.17
+RUN ln -s solc-static-linux-0.5.17 /usr/local/bin/solc-0.5.17
 
 # Install z3
 RUN wget https://github.com/Z3Prover/z3/archive/Z3-4.8.5.zip
@@ -53,7 +54,7 @@ RUN cd boogie && git checkout 9e74c3271f430adb958908400c6f6fce5b59000a && wget h
 RUN apt install python3-pip -y
 RUN pip3 install psutil
 RUN git clone https://github.com/SRI-CSL/solidity.git
-RUN cd solidity && git checkout v0.5.16-solc-verify && ./scripts/install_deps.sh && mkdir build && cd build/ && cmake -DBOOGIE_BIN="/boogie/Binaries/" .. && make
+RUN cd solidity && git checkout v0.5.16-solc-verify && ./scripts/install_deps.sh && mkdir build && cd build/ && cmake -DBOOGIE_BIN="/boogie/Binaries/" .. && make && make install
 RUN ln -s /z3-Z3-4.8.5/build/z3 /usr/local/bin/z3
 
 # ## INSTALL VERISOL
