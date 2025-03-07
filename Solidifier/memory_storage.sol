@@ -58,6 +58,7 @@ contract MemoryStorage {
         vS[0] = 2;
         
         Verification.Assert(vM1[0] == 1);
+        Verification.Assert(vM2[0] == 0);
     }
 
     Person carol;
@@ -74,6 +75,30 @@ contract MemoryStorage {
 
         Verification.Assert(alice.account.balance == 10);
         Verification.Assert(bob.account.balance == 0);
+    }
+
+    function testShallowCopyComplex() public {
+        Person memory alice;
+        Person memory bob;
+
+        alice.account = bob.account;
+        alice.account.balance = 20;
+
+        carol.account.balance = 10;
+        alice.account = carol.account;
+
+        Verification.Assert(alice.account.balance == 10);
+        Verification.Assert(bob.account.balance == 20);
+
+        bob.account = alice.account;
+        Verification.Assert(bob.account.balance == 10);
+
+        bob.account.balance = 30;
+        Verification.Assert(alice.account.balance == 30);
+
+        carol = bob;
+        carol.account.balance = 40;
+        Verification.Assert(bob.account.balance == 30);
     }
 
 }
