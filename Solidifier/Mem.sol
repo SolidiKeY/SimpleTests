@@ -44,13 +44,13 @@ contract SimpleMemory {
     }
 
     function testDefault2() public {
-        Person memory alicee;
-        Person memory bobb;
-        Verification.Assert(alicee.account.balance == 0);
+        Person memory alice;
+        Person memory bob;
+        Verification.Assert(alice.account.balance == 0);
 
-        bobb.account.balance = 10;
-        bobb.account = alicee.account;
-        Verification.Assert(bobb.account.balance == 0);
+        bob.account.balance = 10;
+        bob.account = alicee.account;
+        Verification.Assert(bob.account.balance == 0);
     }
 
     function testMemoryComplex() public {

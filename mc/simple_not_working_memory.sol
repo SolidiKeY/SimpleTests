@@ -41,13 +41,13 @@ contract SimpleMemory {
     }
 
     function testDefault2() pure public {
-        Person memory alicee;
-        Person memory bobb;
-        assert(alicee.account.balance == 0);
+        Person memory alice;
+        Person memory bob;
+        assert(alice.account.balance == 0);
 
-        bobb.account.balance = 10;
-        bobb.account = alicee.account;
-        assert(bobb.account.balance == 0);
+        bob.account.balance = 10;
+        bob.account = alice.account;
+        assert(bob.account.balance == 0);
     }
 
     function testMemoryComplex() pure public {
