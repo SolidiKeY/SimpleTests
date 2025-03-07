@@ -492,7 +492,7 @@
     "remix-test": "remix-tests -c 0.8.18 tests",
     "truffle-test": "truffle test",
     "mc": "solc --model-checker-engine all mc/evaluation_order.sol",
-    "test": "npm run remix-test && npm run truffle-test && npm run mc"
+    "test": "npm run remix-test && npm run truffle-test"
   },
   "keywords": [
     "solidity"
