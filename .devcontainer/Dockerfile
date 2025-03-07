@@ -69,6 +69,10 @@ RUN ~/.dotnet/tools/VeriSol C.sol C; exit 0 # First run install z3, boogie and c
 RUN apt-get install libssl-dev -y
 # RUN pip3 install -Iv mythril==0.22.1
 
+## Npm
+RUN apt-get -y install nodejs
+RUN apt-get -y install npm
+
 COPY Solidifier /scripts
 # COPY run_examples.sh /
 # COPY run_examples_with_solc-verify.sh /
